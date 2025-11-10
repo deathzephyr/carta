@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uma Carta Para Você</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --desk-bg: #3d2f1f;
+            --paper-color: #f4f1e9;
+            --ink-color: #4a3b2a;
+            --seal-color: #a52a2a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Lora', serif;
+            background-color: var(--desk-bg);
+            background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+            color: var(--ink-color);
+            overflow-x: hidden;
+        }
+
+        /* --- Envelope Initial State --- */
+        .envelope-container {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .envelope {
+            width: 300px;
+            height: 200px;
+            background: #e8dcc0;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .envelope:hover {
+            transform: scale(1.05);
+        }
+
+        .envelope::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 100px 150px 0 150px;
+            border-color: #d4c4a8 transparent transparent transparent;
+            transform-origin: top;
+            transition: transform 0.5s 0.3s ease-out;
+        }
+
+        .envelope.opened::before {
+            transform: rotateX(180deg);
+        }
+
+        .seal {
+            position: absolute;
+            top: 80px;
+            left: 125px;
+            width: 50px;
+            height: 50px;
+            background: var(--seal-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: gold;
+            box-shadow: 0 0 10px rgba(0,0,0,0.4);
+            z-index: 10;
+            opacity: 1;
+            transition: opacity 0.3s 0.2s, transform 0.5s 0.4s ease-out;
+        }
+
+        .envelope.opened .seal {
+            opacity: 0;
+            transform: scale(0) rotate(360deg);
+        }
+        
+        .open-prompt {
+            position: absolute;
+            bottom: 20%;
+            width: 100%;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.2rem;
+            font-style: italic;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        /* --- Letter --- */
+        .letter-container {
+            min-height: 100vh;
+            padding: 50px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .letter {
+            max-width: 600px;
+            background: var(--paper-color);
+            padding: 50px 60px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            border-radius: 5px;
+            position: relative;
+            transform-origin: top center;
+            transition: transform 1s ease-out;
+        }
+
+        .letter-content p {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .letter-content p.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .salutation {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--seal-color);
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .salutation.visible {
+            opacity: 1;
+            transform: translateX(0);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .closing {
+            text-align: right;
+            margin-top: 40px;
+        }
+
+        .closing p {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        .ps {
+            margin-top: 30px;
+            font-style: italic;
+            font-size: 1rem;
+            color: #666;
+        }
+
+    </style>
+</head>
+<body>
+
+    <section class="envelope-container" id="envelope-section">
+        <div class="envelope" id="envelope">
+            <div class="seal">🕊️</div>
+        </div>
+        <p class="open-prompt">Clique para abrir</p>
+    </section>
+
+    <main class="letter-container" id="letter-section">
+        <article class="letter" id="letter">
+            <div class="letter-content">
+                <h2 class="salutation">Minha querida,</h2>
+
+                <p>
+                    Encontrei estas palavras perdidas em meio aos meus pensamentos, e, por alguma razão, todas elas apontavam para você. Não é um grande discurso, nem um poema de versos perfeitos. É apenas um registro do que seu sorriso é capaz de fazer no caos de um dia comum.
+                </p>
+
+                <p>
+                    Você chegou e, com a sua luz, transformou o cinza que eu nem sabia que existia em uma paleta de cores que eu nunca soube nomear. É engraçado como a presença de alguém pode nos fazer ver o mundo com olhos novos. Você me fez ver.
+                </p>
+
+                <p>
+                    Então, esta carta é um simples obrigado. Obrigado por existir, por ser a trilha sonora de minhas melhores horas e a calma em meio às tempestades. Obrigado por me lembrar que a beleza mais verdadeira mora nas coisas mais simples: um olhar, uma risada, um silêncio compartilhado.
+                </p>
+
+                <p>
+                    Eu Te Amo Debora Vitória Vezetiv de Souza <3
+                </p>
+
+                <div class="closing">
+                    <p>Luan Dhony</p>
+                </div>
+
+                 <p>
+                     ︎︎︎︎︎︎︎︎︎︎
+                </p>
+
+            </div>
+        </article>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const envelope = document.getElementById('envelope');
+            const letter = document.getElementById('letter');
+            const paragraphs = document.querySelectorAll('.letter-content p, .salutation');
+            
+            // Initial state: letter is "folded"
+            letter.style.transform = 'perspective(1000px) rotateX(90deg)';
+
+            envelope.addEventListener('click', () => {
+                envelope.classList.add('opened');
+                
+                // Scroll to the letter section
+                setTimeout(() => {
+                    document.getElementById('letter-section').scrollIntoView({ behavior: 'smooth' });
+                    
+                    // "Unfold" the letter
+                    setTimeout(() => {
+                        letter.style.transform = 'perspective(1000px) rotateX(0deg)';
+                    }, 500); // Wait for scroll to start
+
+                }, 400); // Wait for envelope flap to open
+            });
+
+            // Intersection Observer to reveal paragraphs
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
+
+            paragraphs.forEach(p => {
+                observer.observe(p);
+            });
+        });
+    </script>
+</body>
+</html>

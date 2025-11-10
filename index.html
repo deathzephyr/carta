@@ -143,7 +143,7 @@
         }
 
         .salutation {
-            font-family: 'Dancing Script', cursive;
+            font-family: 'Dancing+Script', cursive;
             font-size: 2.5rem;
             font-weight: 700;
             color: var(--seal-color);
@@ -176,6 +176,58 @@
             color: #666;
         }
 
+        /* --- Mobile Optimizations --- */
+        @media (max-width: 768px) {
+            .envelope {
+                width: 250px;
+                height: 167px; /* Maintain aspect ratio */
+            }
+
+            .envelope::before {
+                border-width: 83.5px 125px 0 125px;
+            }
+
+            .seal {
+                top: 67px;
+                left: 100px;
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+
+            .open-prompt {
+                font-size: 1rem;
+                bottom: 15%;
+            }
+
+            .letter-container {
+                padding: 20px 15px; /* Reduce padding on mobile */
+            }
+
+            .letter {
+                padding: 30px 25px; /* Much less padding for smaller screens */
+            }
+
+            .salutation {
+                font-size: 2rem; /* Smaller, more elegant for mobile */
+                margin-bottom: 20px;
+            }
+
+            .letter-content p {
+                font-size: 1.1rem; /* Slightly smaller for better readability */
+                line-height: 1.7;
+                margin-bottom: 15px;
+            }
+
+            .closing p {
+                font-size: 1.6rem;
+            }
+
+            .ps {
+                font-size: 0.9rem;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -204,7 +256,7 @@
                     Então, esta carta é um simples obrigado. Obrigado por existir, por ser a trilha sonora de minhas melhores horas e a calma em meio às tempestades. Obrigado por me lembrar que a beleza mais verdadeira mora nas coisas mais simples: um olhar, uma risada, um silêncio compartilhado.
                 </p>
 
-                <p>
+                   <p>
                     Eu Te Amo Debora Vitória Vezetiv de Souza <3
                 </p>
 
@@ -215,6 +267,7 @@
                  <p>
                      ︎︎︎︎︎︎︎︎︎︎
                 </p>
+
 
             </div>
         </article>
